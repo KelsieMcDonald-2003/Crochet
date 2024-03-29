@@ -1,0 +1,29 @@
+﻿﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>
+        Crocheting is beautiful yarn art done by crocheting hooks and yarn. It can inspire us to bring our imagination alive. Once you learn the basics, you will have something beautiful to share! If you are a beginner, click on the basic stitches tab or click the button below to learn some basic stitches!
+    </p>
+    <a asp-controller="Stitches" asp-action="Index" class="btn btn-primary">Stitches</a>
+    <p>
+        <br />
+        For those of you who are a little more experienced, you can view different patterns posted by others, or you, yourself can post your own patterns. You can
+        click on the Patterns tab or you can click on the button below.
+    </p>
+    <a asp-controller="Patterns" asp-action="Index" class="btn btn-primary">Patterns</a>
+    <p>
+        <br />
+        Did you see a pattern that you liked? Did a certain pattern you tried turned out? Would you like to recommend that pattern? Click on the Pattern Recommendations tab
+        or click on the button below.
+    </p>
+    <a asp-controller="Recommendations" asp-action="Index" class="btn btn-primary">Recommendations</a>
+    <p>
+        <br />
+        Are you proud of a certain project? Want to show others of that proud work? Do you want to view pictures of other's work? Well, you came to the right place!
+        you can click on the Photos tab, or you can click on the button down below.
+    </p>
+    <a asp-controller="Photos" asp-action="Index" class="btn btn-primary">Photos</a>
+</div>

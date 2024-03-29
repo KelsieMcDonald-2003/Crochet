@@ -1,0 +1,36 @@
+﻿@model List<RecommendationModel>
+@{
+    ViewData["Title"] = "Recommendations";
+}
+
+<div class="mb-2">
+    <a asp-controller="Recommendations" asp-action="Add" class="btn btn-primary">Add a New Recommendation</a>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Pattern's Publisher</th>
+            <th>Published Date</th>
+            <th>Description</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var models in Model)
+        {
+            <tr>
+                <td>@models.Title</td>
+                <td>@models.Author</td>
+                <td>@models.PubDate</td>
+                <td>@models.Description</td>
+                <td>@models.Rating</td>
+                <td>
+                    <a href="/Recommendations/Edit?recommendId=@models.RecommendId">Edit</a>
+                    <a href="/Recommendations/Delete?recommendId=@models.RecommendId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

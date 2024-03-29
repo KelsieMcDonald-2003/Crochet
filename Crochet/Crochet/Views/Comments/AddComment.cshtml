@@ -1,0 +1,18 @@
+﻿@model CommentModel
+@{
+    ViewData["Title"] = "Comments";
+}
+
+<h2>Add Comment</h2>
+
+<form asp-action="AddComment" method="post">
+    <div class="mb-3">
+        <label asp-for="Comment" class="form-label">Comment:</label>
+        <input asp-for="Comment" class="form-control" />
+    </div>
+
+    <input type="hidden" asp-for="CommentId" />
+    <input type="hidden" asp-for="PatternId" />
+    <button type="submit" class="btn btn-primary">Add Comment</button>
+    <a asp-controller="Patterns" asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>

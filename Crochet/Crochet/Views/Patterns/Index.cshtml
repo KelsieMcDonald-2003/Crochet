@@ -1,0 +1,44 @@
+﻿@model List<PatternModel>
+@{
+    ViewData["Title"] = "Patterns";
+}
+
+<div class="mb-2">
+    <a asp-controller="Patterns" asp-action="Add" class="btn btn-primary">Add a Pattern</a>
+</div>
+
+<form asp-controller="Patterns" asp-action="Index" method="post">
+    <input type="text" name="searchString" />
+    <input type="submit" value="Search" />
+</form>
+
+@if (Model != null)
+{
+    foreach (var pattern in Model)
+    {
+        <h2>@pattern.PatternTitle</h2>
+        <p>
+            @pattern.User.UserName <br>
+            @pattern.Date <br>
+            @pattern.EstimateofHours <br>
+            @pattern.YarnBrand <br>
+            @pattern.YarnColor<br>
+            @pattern.YarnWeight<br>
+            @pattern.Level?.LevelName<br>
+            @pattern.Hook?.HookName<br>
+            @pattern.PatternSize<br>
+            @pattern.PatternDescription<br>
+            @pattern.Pattern
+        </p>
+        <h3>Comments</h3>
+        @foreach (var comment in pattern.Comments)
+        {
+            <p>@comment.Comment</p>
+        }
+        <p>
+            <a href="/Comments/AddComment?patternId=@pattern.PatternId">Add a Comment</a>
+            <a href="/Patterns/Edit?patternId=@pattern.PatternId">Edit</a>
+            <a href="/Patterns/Delete?patternId=@pattern.PatternId">Delete</a>
+        </p>
+    }
+}

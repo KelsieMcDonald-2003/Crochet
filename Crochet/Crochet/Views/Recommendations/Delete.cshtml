@@ -1,0 +1,14 @@
+﻿@model RecommendationModel
+@{
+    ViewData["Title"] = "Delete Recommendation";
+}
+
+<h2>Confirm Deletion</h2>
+<h3>@Model.Title</h3>
+
+<form asp-action="Delete" method="Post">
+    <input type="hidden" asp-for="RecommendId" />
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-controller="Recommendations" asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>

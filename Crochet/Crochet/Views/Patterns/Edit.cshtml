@@ -1,0 +1,84 @@
+﻿@model PatternModel
+@{
+    string title = ViewBag.Action + " Pattern";
+    ViewData["Title"] = title;
+}
+
+<h2>@title</h2>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="PatternTitle" class="form-label">Pattern Title:</label>
+        <input asp-for="PatternTitle" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="LevelId" class="form-label">Level of Skill:</label>
+        <select asp-for="LevelId" class="form-select">
+            @if (ViewBag.Level != null)
+            {
+                foreach (LevelModel l in ViewBag.Level)
+                {
+                    <option value="@l.LevelId">@l.LevelName</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="HookId" class="form-label">Hook Size:</label>
+        <select asp-for="HookId" class="form-select">
+            @if (ViewBag.Hook != null)
+            {
+                foreach (HookModel h in ViewBag.Hook)
+                {
+                    <option value="@h.HookId">@h.HookName @h.HookSize</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="YarnBrand" class="form-label">Yarn Brand:</label>
+        <input asp-for="YarnBrand" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="YarnColor" class="form-label">Yarn Color:</label>
+        <input asp-for="YarnColor" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="YarnWeight" class="form-label">Yarn Weight:</label>
+        <input asp-for="YarnWeight" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="EstimateofHours" class="form-label">Estimate of Hours:</label>
+        <input asp-for="EstimateofHours" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PatternSize" class="form-label">Estimated Size:</label>
+        <input asp-for="PatternSize" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="StitchesUsed">Stitches Used:</label>
+        <input asp-for="StitchesUsed" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PatternDescription" class="form-label">Pattern's Description:'</label>
+        <textarea asp-for="PatternDescription" class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Pattern" class="form-label">Pattern:</label>
+        <textarea asp-for="Pattern" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a asp-controller="Patterns" asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
