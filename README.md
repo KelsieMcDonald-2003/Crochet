@@ -10,3 +10,4 @@ This is a ASP.NET Core (Model-View-Controller) Web Program.
    - Add Comments to Crocheting Patterns
    - Add Pattern Recommendations
    - Learn How to Crochet Basic Stitches
+   - Search Patterns by title
