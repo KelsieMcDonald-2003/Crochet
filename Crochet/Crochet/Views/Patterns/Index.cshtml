@@ -3,9 +3,12 @@
     ViewData["Title"] = "Patterns";
 }
 
-<div class="mb-2">
-    <a asp-controller="Patterns" asp-action="Add" class="btn btn-primary">Add a Pattern</a>
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="mb-2">
+        <a asp-controller="Patterns" asp-action="Add" class="btn btn-primary">Add a Pattern</a>
+    </div>
+}
 
 <form asp-controller="Patterns" asp-action="Index" method="post">
     <input type="text" name="searchString" />
@@ -38,7 +41,11 @@
         <p>
             <a href="/Comments/AddComment?patternId=@pattern.PatternId">Add a Comment</a>
             <a href="/Patterns/Edit?patternId=@pattern.PatternId">Edit</a>
-            <a href="/Patterns/Delete?patternId=@pattern.PatternId">Delete</a>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <a href="/Patterns/Delete?patternId=@pattern.PatternId">Delete</a>
+            }
         </p>
     }
 }

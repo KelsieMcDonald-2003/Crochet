@@ -3,9 +3,12 @@
     ViewData["Title"] = "Pictures";
 }
 
-<div class=" = mb-2">
-    <a asp-controller="Photos" asp-action="Add" class="btn btn-primary">Add a Photo</a>
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="mb-2">
+        <a asp-controller="Photos" asp-action="Add" class="btn btn-primary">Add a Photo</a>
+    </div>
+}
 
 <h2>Photos</h2>
 @foreach (var image in Model)
@@ -16,7 +19,10 @@
     <h3>@image.PhotoName</h3>
     <p><img src="@imgSrc" /></p>
     <p>@image.PhotoDescription</p>
-    <p>
-        <a href="/Photos/Delete?photoId=@image.PhotoId">Delete Photo</a>
-    </p>
+    @if (User.IsInRole("Admin"))
+    {
+        <p>
+            <a href="/Photos/Delete?photoId=@image.PhotoId">Delete Photo</a>
+        </p>
+    }
 }
