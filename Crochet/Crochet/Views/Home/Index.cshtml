@@ -12,36 +12,39 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            @for (int i = 0; i < Model.Count(); i++)
-            {
-                <li data-target="#carouselExampleIndicators" data-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
-            }
-        </ol>
-        <div class="carousel-inner">
-            @for (int i = 0; i < Model.Count(); i++)
-            {
-                var photo = Model.ElementAt(i);
-                var photoBase64 = Convert.ToBase64String(photo.Photo);
-                <div class="carousel-item @(i == 0 ? "active" : "")">
-                    <img class="d-block w-100" src="data:image/jpeg;base64,@photoBase64" alt="@photo.PhotoName">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>@photo.PhotoName</h5>
-                        <p>@photo.PhotoDescription</p>
+    @if (Model != null && Model.Any())
+    {
+        <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <li data-target="#carouselIndicators" data-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
+                }
+            </ol>
+            <div class="carousel-inner">
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    var photo = Model.ElementAt(i);
+                    var photoBase64 = Convert.ToBase64String(photo.Photo);
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <img class="d-block w-100" src="data:image/jpeg;base64,@photoBase64" alt="@photo.PhotoName">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>@photo.PhotoName</h5>
+                            <p>@photo.PhotoDescription</p>
+                        </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
+            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+    }
     <br />
     <p>
         Crocheting is beautiful yarn art done by crocheting hooks and yarn. It can inspire us to bring our imagination alive. Once you learn the basics, you will have something beautiful to share! If you are a beginner, click on the basic stitches tab or click the button below to learn some basic stitches!

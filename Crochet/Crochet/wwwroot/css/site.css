@@ -16,3 +16,26 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Carousel Styling */
+.carousel-item img {
+    max-width: 400px;
+    max-height: 300px;
+    margin: auto;
+}
+
+#carouselIndicators {
+    background-color: black;
+    max-width: 500px;
+    max-height:300px;
+    margin: auto;
+}
+
+/* Navbar Styling */
+.navbar, .navbar * {
+    background-color:plum;
+}
+
+.navbar-nav {
+    background-color:plum;
+}
